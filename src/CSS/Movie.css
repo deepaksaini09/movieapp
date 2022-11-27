@@ -1,0 +1,10 @@
+.transitionImage{
+    transition: 0.6s all ease-in-out ;
+    opacity: 1;
+}
+
+.transitionImage:hover{
+    transform: scale(1.03);
+    opacity: 1;
+    overflow-y:hidden;
+}

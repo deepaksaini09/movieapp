@@ -1,0 +1,12 @@
+.fContainer{
+    display: flex;
+    justify-content:space-evenly;
+    /*align-items:start;*/
+    /*margin-left:23px;*/
+}
+
+.fItem{
+    cursor: pointer;
+    color:black;
+
+}

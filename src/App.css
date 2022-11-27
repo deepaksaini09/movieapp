@@ -1,0 +1,20 @@
+.App{
+  text-align: center;
+}
+.personLabel{
+  color: red;
+}
+.registar-container{
+  width: 500px !important;
+}
+.registration-button{
+  background-color: green;
+  color:white;
+}
+.main_class{
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px red;
+  width: 600px;
+
+}

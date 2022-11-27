@@ -1,0 +1,108 @@
+import React, {memo, useCallback, useState} from "react";
+import Star from "./Star";
+import RatePopUpWindow from "./RatePopUpWindow";
+import InfiniteScroll from "react-infinite-scroll-component";
+import VideoFrame from "./VideoFrame";
+import {FaStar} from "react-icons/fa";
+import {NavLink} from "react-router-dom";
+import '../CSS/Movie.css'
+import {Button} from "@mui/material";
+function Movies({moviesData,fetchMoreData}){
+    const Genres = ['Comedy','Horror','Action','Thriller','Horror','Romance','Drama','Animation','Science Fiction',
+                    'Science Fiction','Adventure','History','Mystery','Fantasy','Family','Western']
+    const Years = [2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006,
+                   2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990]
+    const Languages = ['Hindi','Hollywood','Bollywood','Tamil','Telugu','Malayalam','Korean','English','Japanese']
+
+    return(
+            <div className={'container'}>
+                <div className={'row'}>
+                   <div className={'col-2'}>
+                       <div style={{marginTop:'100px'}} className={'card'}>
+                           <p style={{color:'black'}}><b>Languages</b></p>
+                               <div className={'card'} style={{height:'300px',overflowY:'scroll'}}>
+                                   {
+                                       Languages.map((currentData)=>{
+                                           return(
+                                               <Button type={'button'}>{currentData}</Button>
+                                           )
+                                       })
+                                   }
+                               </div>
+                           <p style={{color:'black'}}><b>Genres</b></p>
+                               <div className={'card'} style={{height:'300px',overflowY:'scroll'}}>
+                                   {
+                                       Genres.map((currentData)=>{
+                                           return(
+                                               <Button type={'button'}>{currentData}</Button>
+                                           )
+                                       })
+                                   }
+                               </div>
+                           <p style={{color:'black'}}><b>Years</b></p>
+                               <div className={'card'} style={{height:'300px',overflowY:'scroll'}}>
+                                   {
+                                       Years.map((currentData)=>{
+                                           return(
+                                               <Button type={'button'}>{currentData}</Button>
+                                           )
+                                       })
+                                   }
+                               </div>
+                       </div>
+                   </div>
+
+                   <div className={'col-10'}>
+                       <div className="container me-2">
+                          <InfiniteScroll
+                                        dataLength={moviesData.length}
+                                        next={fetchMoreData}
+                                        hasMore={true}
+                                        loader={<h4 style={{textAlign:"center"}}>Loading...</h4>}
+                                    > <div className="container ">
+                                    <div className="row">
+                                    {
+                                        moviesData.map((currentData)=>{
+                                return (
+
+                                    <div className="col-sm-2 ms-2 card m-2" style={{width:"20%"}} key={currentData.id}>
+                                        <NavLink to={`/movies/${((currentData.movie_name).split(' ').join('-')).toLowerCase()+'-'+currentData.id}`} className="card-img card-img--lg relative"
+                                           title=""><img  title={currentData.movie_name} src={currentData.image_link} style={{marginRight:"10px",width:'100%'}} className="img-responsive card transitionImage" alt={currentData.movie_name}/></NavLink>
+
+                                        <div className={'container'}>
+                                             <div className={'row'}>
+                                                 <div className={'col-6'}> {currentData.rating_percentage} <FaStar></FaStar></div>
+                                                  <div className={'col-6 '}><RatePopUpWindow movieName ={currentData.movie_name}></RatePopUpWindow></div>
+                                             </div>
+                                        </div>
+
+                                            <div className={'row'}>
+                                            <div className={'col-12'}>
+                                                <b> <label title={currentData.movie_name}> {currentData.movie_name}</label></b>
+                                            </div>
+
+                                        </div>
+                                        <div className={'row'}>
+                                            <div className={'col-12'}>
+                                                 <span style={{textAlign:"right"}}> {currentData.release_date} </span>
+                                            </div>
+                                        </div>
+                                        <div className={"container"}>
+                                            <div className={"row"}>
+                                                <div title={currentData.movie_name} className={'col-12 card'} style={{backgroundColor:'darkcyan'}}>
+                                                    <VideoFrame  movieName ={currentData.movie_name} videLink={currentData.videoTrailerLink} trailer={'Trailer'} style={{width:"100%"}} ></VideoFrame>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>)})
+                                    }</div>
+                                    </div>
+                          </InfiniteScroll>
+                       </div>
+                   </div>
+                </div>
+            </div>
+    )}
+
+export default memo(Movies);

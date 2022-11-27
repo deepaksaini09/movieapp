@@ -1,0 +1,26 @@
+.detailPageImage::before{
+    display: block;;
+    position: absolute;
+    top: 110px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    z-index: 10;
+}
+
+
+.posterImageContent{
+    margin-top: 23%;
+    margin-left:0;
+    padding-left: 0px;
+}
+.postImageRightContent{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style-type:none;
+}
+.setOverFlowScroll{
+    overflow-x: scroll;
+}
