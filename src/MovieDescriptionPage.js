@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {memo, useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import MovieDetailPage from "./MovieDetailPage";
 
@@ -47,4 +47,4 @@ function MovieDescriptionPage(){
     )
 }
 
-export default MovieDescriptionPage;
+export default memo(MovieDescriptionPage);

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {memo, useCallback, useEffect, useState} from "react";
 import Movies from "../component/Movies"
 import Student from "../component/Student";
 import {FaStar} from "react-icons/fa";
@@ -48,4 +48,4 @@ function MovType({type}){
         </div>
     )
 }
-export default MovType;
+export default memo(MovType);

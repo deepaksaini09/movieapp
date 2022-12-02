@@ -1,5 +1,5 @@
-import {changeNumber,changeMovieType} from "./upDown";
+import {changeNumber,changeMovieType,changeGenresType,changeYearsType} from "./upDown";
 import {combineReducers} from "redux";
 
-const rootReducer = combineReducers({changeNumber,changeMovieType});
+const rootReducer = combineReducers({changeNumber,changeMovieType,changeGenresType,changeYearsType});
 export  default rootReducer;
