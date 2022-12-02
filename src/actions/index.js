@@ -13,5 +13,21 @@ export const entertainmentType =(movieName)=>{
     return{
        type:'movie',
         movieType:movieName
+
+
     }
 }
+export  const genresType =(genres)=>{
+    return{
+        type:'genres',
+        genres:genres
+    }
+}
+
+export  const yearsType =(years)=>{
+    return{
+        type:'years',
+        years:years
+    }
+}
+

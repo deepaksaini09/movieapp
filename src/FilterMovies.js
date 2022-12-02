@@ -5,7 +5,7 @@ import {entertainmentType} from "./actions";
 import {NavLink} from "react-router-dom";
 
 function FilterMovies(props){
-    // console.log('filter')
+    console.log('filter')
        const dispatch = useDispatch()
     // style={({isActive})=> isActive?{borderBottom:'5px solid red'}:{textDecoration:'none'}}
     return(

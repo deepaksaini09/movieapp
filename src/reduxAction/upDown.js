@@ -8,12 +8,28 @@ export function changeNumber(state = initialValue , action){
         default: return state;
     }
 }
-console.log('init')
+console.log('init-------------------------------------------------------')
 const movieName = 'all'
+const years = 'None'
+const genres = 'None'
 // const [data,setData] = useState([])
 export function changeMovieType(state = movieName, action){
     switch (action.type){
-        case 'movie': return {type:action.movieType,initData:[]};
-        default : return {type:state,initData:[]};
+        case 'movie': return action.movieType;
+        default : return state;
+    }
+}
+
+export function changeGenresType(state = genres, action){
+    switch (action.type){
+        case 'genres': return action.genres;
+        default : return state;
+    }
+}
+
+export function changeYearsType(state = years, action){
+    switch (action.type){
+        case 'years': return action.years;
+        default : return state;
     }
 }

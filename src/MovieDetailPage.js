@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import './CSS/MovieDetailPage.css'
 import VideoFrame from "./component/VideoFrame";
 import {NavLink} from "react-router-dom";
@@ -119,4 +119,4 @@ function MovieDetailPage({data,castActor}){
     )
 }
 
-export default MovieDetailPage;
+export default memo(MovieDetailPage);
