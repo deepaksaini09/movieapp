@@ -20,6 +20,7 @@ function App(){
    const type = useSelector((stat)=> stat.changeMovieType);
    const genresType =useSelector((state)=>state.changeGenresType);
    const yearsType = useSelector((state)=>state.changeYearsType);
+   // const rating = useSelector((state)=>state.setMovieRating)
     return(
         <div>
             <Menu></Menu>
