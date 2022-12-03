@@ -1,12 +1,15 @@
-import React,{useState} from "react";
+import React, {memo, useEffect, useState} from "react";
 import {FaStar} from "react-icons/fa";
 // import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {setMovieRating} from "../reduxAction/upDown";
+import {currentMovieRank} from "../actions";
 
 const colors ={
     orange:"blue",
     grey:"grey",
 }
-function Star(){
+function Star(props){
     const stars = Array(10).fill(0);
     const [currentValue,setCurrentValue] = useState(0);
     const [hoverValue , setHoverValue] = useState(undefined);
@@ -22,10 +25,12 @@ function Star(){
         setHoverValue(undefined);
     }
     console.log('clicked');
+    const dispatch = useDispatch()
+     dispatch(currentMovieRank(currentValue));
     return(
         <div style={Style}>
 
-            <h1 > current rank is :{currentValue}</h1>
+            <h1 > you like :{currentValue}/10</h1>
             <div>{stars.map((_,index)=>{
                 return (
 
@@ -49,4 +54,4 @@ const Style ={
 
 }
 
-export default Star;
+export default memo(Star);

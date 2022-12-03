@@ -31,3 +31,10 @@ export  const yearsType =(years)=>{
     }
 }
 
+export const currentMovieRank =(rating)=>{
+    return{
+        type:'rating',
+        rate:rating,
+    }
+}
+

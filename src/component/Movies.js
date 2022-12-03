@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 import {genresType,yearsType} from "../actions";
 import {Button} from "@mui/material";
 function Movies({moviesData,fetchMoreData,year,genre}){
-    const Genres = ['Comedy','Horror','Action','Thriller','Horror','Romance','Drama','Animation','Science Fiction',
+    const Genres = ['Comedy','Horror','Action','Thriller','Romance','Drama','Animation','Science Fiction',
                     'Science Fiction','Adventure','History','Mystery','Fantasy','Family','Western']
     const Years = [2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006,
                    2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990]
@@ -74,7 +74,7 @@ function Movies({moviesData,fetchMoreData,year,genre}){
                                         <div className={'container'}>
                                              <div className={'row'}>
                                                  <div className={'col-6'}> {currentData.rating_percentage} <FaStar></FaStar></div>
-                                                  <div className={'col-6 '}><RatePopUpWindow movieName ={currentData.movie_name}></RatePopUpWindow></div>
+                                                  <div className={'col-6 '}><RatePopUpWindow movieName ={currentData.movie_name} movieID={currentData.id}></RatePopUpWindow></div>
                                              </div>
                                         </div>
 

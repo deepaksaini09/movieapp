@@ -33,3 +33,10 @@ export function changeYearsType(state = years, action){
         default : return state;
     }
 }
+const rating = 0;
+export function setMovieRating(state= rating,action){
+    switch (action.type){
+        case 'rating': return action.rate;
+        default :return 0;
+    }
+}
