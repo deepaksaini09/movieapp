@@ -1,8 +1,22 @@
 import React, {memo} from 'react';
 import {Link,NavLink} from 'react-router-dom'
 import './NavB.css'
+import {genresType, topRated, upComing} from "./actions";
+import {useDispatch} from "react-redux";
+import {setComingMovies, setTopRated} from "./reduxAction/upDown";
+
  function Menu(){
+      const dispatch = useDispatch()
+     // ()=>dispatch(setTopRated(1))
     console.log('ghi')
+     const setTopRatedMovies =(e)=>{
+          // e.preventDefault()
+          dispatch(topRated(1))
+     }
+     const setMoviesForComing=(e)=>{
+          // e.preventDefault();
+          dispatch(upComing(1));
+     }
     return(
         <div>
          {/*   <div>*/}
@@ -31,8 +45,8 @@ import './NavB.css'
                     </button>
                     <div className="mdropdown-content">
                          <NavLink style={({isActive})=> isActive?{textDecoration:"underline"}:{textDecoration:'none'}} to={'/movieType'}>Popular</NavLink>
-                         <NavLink to={'/tv1'}>Upcoming</NavLink>
-                         <NavLink to={'/people1'}>Top Rated</NavLink>
+                         <NavLink to={'/movies'} onClick={(e)=>setMoviesForComing(e)}>Upcoming</NavLink>
+                         <NavLink to={'/movies'} onClick={(e)=> setTopRatedMovies(e)}>Top Rated</NavLink>
                     </div>
                 </div>
                 <div className="mdropdown">

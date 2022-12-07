@@ -38,3 +38,18 @@ export const currentMovieRank =(rating)=>{
     }
 }
 
+
+export const topRated =(rating)=>{
+    return{
+        type:'top',
+        rate:rating,
+    }
+}
+
+export const upComing =(coming)=>{
+    return{
+        type:'coming',
+        coming:coming,
+    }
+}
+

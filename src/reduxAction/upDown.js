@@ -40,3 +40,21 @@ export function setMovieRating(state= rating,action){
         default :return 0;
     }
 }
+
+
+const top = 0;
+
+export function setTopRated(state= top,action){
+    switch (action.type){
+        case 'top': return action.rate;
+        default :return state;
+    }
+}
+
+const coming =0;
+export function setComingMovies(state= coming,action){
+    switch (action.type){
+        case 'coming': return action.coming;
+        default :return state;
+    }
+}
