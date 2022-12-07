@@ -10,7 +10,7 @@ import {Provider} from "react-redux";
 import store from "../storeReducer";
 import {useNavigate} from "react-router-dom";
 
-function Home({type,genre,year}){
+function Home({type,genre,year,top,coming}){
     const [data,setData] = useState([]);
     const [isLoaded,setLoaded] =useState(false);
     const [page,setPage] = useState(0);
@@ -22,7 +22,7 @@ function Home({type,genre,year}){
     const FetchAPI = async ()=> {
         try {
             console.log(data, "*****************************************************************************************")
-            const res = await fetch(`http://localhost:8000/years-genre-language?years=${year}&genres=${genre}&topRated=0&limit=10&page=${page}&type=${type}`);
+            const res = await fetch(`http://localhost:8000/years-genre-language?years=${year}&genres=${genre}&topRated=${top}&limit=10&page=${page}&type=${type}&upComing=${coming}`);
             const jsonData = await res.json();
 
             setData(data.concat(jsonData))
@@ -38,7 +38,7 @@ function Home({type,genre,year}){
     const FetchAPI1 = async ()=> {
         try {
             console.log(data, "*****************************************************************************************")
-            const res = await fetch(`http://localhost:8000/years-genre-language?years=${year}&genres=${genre}&topRated=0&limit=10&page=0&type=${type}`);
+            const res = await fetch(`http://localhost:8000/years-genre-language?years=${year}&genres=${genre}&topRated=${top}&limit=10&page=0&type=${type}&upComing=${coming}`);
             const jsonData = await res.json();
 
             setData(jsonData)
@@ -62,7 +62,7 @@ function Home({type,genre,year}){
          setPageExecute(true);
         FetchAPI1()
         console.log(pageExecute,"(((((((((((((((((((((((((((((((((")
-    },[type,year,genre])
+    },[type,year,genre,top,coming])
 
 
     // useEffect(()=>{
@@ -89,9 +89,9 @@ function Home({type,genre,year}){
         <div>
             {/*<h1 > Movie {type} 1</h1>*/}
 
-            {isLoaded? <Movies moviesData={data} fetchMoreData={fetchMoreData} year={year} genre={genre}></Movies>:<h1>Loading.....</h1>}
+            {isLoaded? <Movies moviesData={data} fetchMoreData={fetchMoreData} year={year} genre={genre} type={type}></Movies>:<h1>Loading.....</h1>}
 
         </div>
     )
 }
-export default memo(Home);
+export default     memo(Home);
