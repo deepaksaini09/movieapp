@@ -1,14 +1,17 @@
-import React, {memo} from 'react';
+import React, {memo, useState} from 'react';
 import {Link,NavLink} from 'react-router-dom'
 import './NavB.css'
-import {genresType, topRated, upComing} from "./actions";
+import './Menu.css'
+import {genresType, searchMovie, topRated, upComing} from "./actions";
 import {useDispatch} from "react-redux";
 import {setComingMovies, setTopRated} from "./reduxAction/upDown";
+import SearchMovies from "./SearchMovies";
 
- function Menu(){
+ function Menu({searchM}){
+     const [dataSearch,setSearchData]=useState([]);
+     console.log(searchM,'forchecking')
       const dispatch = useDispatch()
      // ()=>dispatch(setTopRated(1))
-    console.log('ghi')
      const setTopRatedMovies =(e)=>{
           // e.preventDefault()
           dispatch(topRated(1))
@@ -17,7 +20,45 @@ import {setComingMovies, setTopRated} from "./reduxAction/upDown";
           // e.preventDefault();
           dispatch(upComing(1));
      }
-    return(
+
+     async function searchMovies(e) {
+         const searchValue = e.target.value;
+         if(searchValue){
+             e.preventDefault();
+          console.log(searchValue,'value 9999999999999999999999999999999999999999999999999')
+          setSearchData(searchValue)
+         // dispatch(searchMovie(e.target.value))
+
+         const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+                        "searchMovie":searchValue
+
+                })
+                            };
+    fetch('http://localhost:8000/search-movies', requestOptions)
+        .then(response => response.json())
+        .then(data =>  dispatch(searchMovie(data)));
+         }else{
+             dispatch(searchMovie('None'))
+         }
+
+
+
+    // let response =  await fetch('http://localhost:8000/search-movies', requestOptions);
+    //  dataSearch = await response.json();
+    //
+    // // searchData = data.movie_details;
+    // console.log(dataSearch.movie_details,'kkkkkkkkkkkkkkkk');
+
+
+
+}
+
+     // console.log(searchData.movie_details,'************saini')
+
+     return(
         <div>
          {/*   <div>*/}
          {/*<ul>*/}
@@ -35,7 +76,6 @@ import {setComingMovies, setTopRated} from "./reduxAction/upDown";
          {/*    </li>*/}
          {/*</ul>*/}
          {/*</div>*/}
-
 
             <div className="mnavbar">
                  <NavLink style={({isActive})=> isActive?{borderBottom:'5px solid red'}:{textDecoration:'none'}} to={'/'}> Home </NavLink>
@@ -68,15 +108,22 @@ import {setComingMovies, setTopRated} from "./reduxAction/upDown";
 
                     </div>
                 </div>
-                <form className="d-flex" style={{marginTop:'2px'}}>
-                    <input className="form-control ms-4" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success" style={{color:'cyan'}} type="submit">Search</button>
-                </form>
+                <div>
+                    <div className="d-flex" style={{marginTop:'2px'}} >
+                        <input  className="form-control ms-4" type="search" placeholder="Search" aria-label="Search"  onChange={searchMovies}/>
+                            <button className="btn btn-outline-success" style={{color:'cyan'}} type="submit">Search</button>
+
+                    </div>
+                </div>
+
             </div>
 
+            <div style={{marginLeft:"1100px"}} >
 
+                     <SearchMovies movies={searchM} ></SearchMovies>
+                    </div>
 
         </div>
     )
 }
-export  default memo(Menu);
+export  default Menu;

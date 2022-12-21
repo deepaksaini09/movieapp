@@ -13,6 +13,7 @@ import {useSelector} from "react-redux";
 import FilterMovies from "./FilterMovies";
 import MovieDescriptionPage from "./MovieDescriptionPage";
 import {setComingMovies} from "./reduxAction/upDown";
+import SearchMovies from "./SearchMovies";
 
 function App(){
     let isLogged =false;
@@ -23,10 +24,11 @@ function App(){
    const yearsType = useSelector((state)=>state.changeYearsType);
    const rating = useSelector((state)=>state.setTopRated)
    const coming = useSelector((state)=>state.setComingMovies)
+   const searchMovie = useSelector((state)=>state.setSearchMovie)
     return(
         <div>
-            <Menu></Menu>
-            {/*<h1>{type},{genresType},{yearsType},{rating},coming:{coming}</h1>*/}
+            <Menu searchM={searchMovie}></Menu>
+            {/*<h1>{type},{genresType},{yearsType},{rating},coming:{coming},Movie:</h1>*/}
             <span><FilterMovies type={type}></FilterMovies></span>
                 <Routes>
                     <Route path={'/'} element={<About></About>}></Route>
@@ -35,11 +37,12 @@ function App(){
                     <Route path={'/post/:category/:id'} element={<Post></Post>}/>
                     <Route path={'/Login'} element={<Login/>}/>
                     <Route path={'/DashBoard'} element={isLogged?<DashBoard/>:<Navigate to={'/Login'} state={data} />}/>
-                    <Route path={"/movies/"} element={<Home type={type} genre={genresType} year={yearsType} top={rating} coming={coming}></Home>}></Route>
+                    <Route path={"/movies/"} element={<Home type={type} genre={genresType} year={yearsType} top={rating} coming={coming} ></Home>}></Route>
                     <Route path={'/movies/:category'} element={<MovieDescriptionPage></MovieDescriptionPage>}></Route>
                     <Route path={"/tv"} element={<h1>Welcome to TV Shows Page</h1>}></Route>
                     <Route path={"/people"} element={<h1>Welcome to People Page</h1>}></Route>
                     <Route path={'/movieType/:type'} element={<MovType></MovType>}></Route>
+                    <Route path={'/movies/search'} element={<SearchMovies></SearchMovies>} ></Route>
                     <Route path={"*"}  element={<Error></Error>}/>
                 </Routes>
 

@@ -58,3 +58,10 @@ export function setComingMovies(state= coming,action){
         default :return state;
     }
 }
+const searchMovie = 'None'
+export function setSearchMovie(state=searchMovie, action){
+    switch (action.type){
+        case 'search': return action.entertainment;
+        default:return state;
+    }
+}

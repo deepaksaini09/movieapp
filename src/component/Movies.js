@@ -61,6 +61,10 @@ function Movies({moviesData,fetchMoreData,year,genre,type}){
                                         next={fetchMoreData}
                                         hasMore={true}
                                         loader={<h4 style={{textAlign:"center"}}>Loading...</h4>}
+                                        endMessage={  <p style={{ textAlign: 'center' }}>
+                                                           <b>Yay! You have seen it all</b>
+                                                       </p>
+                                                    }
                                     > <div className="container ">
                                     <div className="row">
                                     {
