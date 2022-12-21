@@ -8,6 +8,7 @@ import {setComingMovies, setTopRated} from "./reduxAction/upDown";
 import SearchMovies from "./SearchMovies";
 
  function Menu({searchM}){
+     let [searchVal,setSearchValue] = useState('')
      const [dataSearch,setSearchData]=useState([]);
      console.log(searchM,'forchecking')
       const dispatch = useDispatch()
@@ -22,9 +23,11 @@ import SearchMovies from "./SearchMovies";
      }
 
      async function searchMovies(e) {
-         const searchValue = e.target.value;
+          e.preventDefault();
+          const searchValue = e.target.value;
+          setSearchValue(searchValue)
          if(searchValue){
-             e.preventDefault();
+
           console.log(searchValue,'value 9999999999999999999999999999999999999999999999999')
           setSearchData(searchValue)
          // dispatch(searchMovie(e.target.value))
@@ -118,9 +121,9 @@ import SearchMovies from "./SearchMovies";
 
             </div>
 
-            <div style={{marginLeft:"1100px"}} >
+            <div style={{marginLeft:"1100px",opacity:'1'}} >
 
-                     <SearchMovies movies={searchM} ></SearchMovies>
+                     <SearchMovies movies={searchM} searchValue={searchVal} ></SearchMovies>
                     </div>
 
         </div>
