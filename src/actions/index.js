@@ -53,3 +53,9 @@ export const upComing =(coming)=>{
     }
 }
 
+export const searchMovie =(movieName)=>{
+    return{
+        type:'search',
+        entertainment:movieName,
+    }
+}
