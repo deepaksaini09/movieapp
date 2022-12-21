@@ -29,7 +29,7 @@ function App(){
         <div>
             <Menu searchM={searchMovie}></Menu>
             {/*<h1>{type},{genresType},{yearsType},{rating},coming:{coming},Movie:</h1>*/}
-            <span><FilterMovies type={type}></FilterMovies></span>
+            {/*<span><FilterMovies type={type}></FilterMovies></span>*/}
                 <Routes>
                     <Route path={'/'} element={<About></About>}></Route>
                     <Route path={'/about'} element={<h1>hi</h1>}></Route>

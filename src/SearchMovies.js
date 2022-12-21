@@ -1,11 +1,10 @@
 import React, {memo} from 'react'
 import {NavLink} from "react-router-dom";
-function SearchMovies({movies}){
-    console.log(movies,'hi---------------------------------------------')
+function SearchMovies({movies,searchValue}){
+    console.log(movies,'hi---------------------------------------------',searchValue)
     return(
         <div >
-             {movies!=='None'?
-                    <div style={{width: '300px', height: '500px', border: '1px solid black', overflowY: 'scroll'}}>
+             {movies!=='None'?(movies.movie_details.length>0?<div style={{width: '300px', height: '500px', border: '1px solid black', overflowY: 'scroll'}}>
                     {movies.movie_details.map((item)=>(
                         <NavLink to={`/movies/${((item.movie_name).split(' ').join('-')).toLowerCase()+'-'+item.id}`}
                                            title="">
@@ -35,7 +34,8 @@ function SearchMovies({movies}){
                         </NavLink>
                     ))}
 
-                </div>
+                </div>:<div  className={'card'} style={{width: '300px', height: '50px',color:'orangered'}}>not found result for {searchValue} </div>)
+
                     :<h2></h2>}
         </div>
     )
