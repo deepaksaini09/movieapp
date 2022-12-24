@@ -14,6 +14,7 @@ import FilterMovies from "./FilterMovies";
 import MovieDescriptionPage from "./MovieDescriptionPage";
 import {setComingMovies} from "./reduxAction/upDown";
 import SearchMovies from "./SearchMovies";
+import AboutMetaVerse from "./AboutMetaVerse";
 
 function App(){
     let isLogged =false;
@@ -32,7 +33,7 @@ function App(){
             {/*<span><FilterMovies type={type}></FilterMovies></span>*/}
                 <Routes>
                     <Route path={'/'} element={<About></About>}></Route>
-                    <Route path={'/about'} element={<h1>hi</h1>}></Route>
+                    <Route path={'/about'} element={<AboutMetaVerse></AboutMetaVerse>}></Route>
                     <Route path={'/contact'} element={<Contact></Contact>}></Route>
                     <Route path={'/post/:category/:id'} element={<Post></Post>}/>
                     <Route path={'/Login'} element={<Login/>}/>

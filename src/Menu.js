@@ -87,7 +87,7 @@ import SearchMovies from "./SearchMovies";
                         <i className="fa fa-caret-down"></i>
                     </button>
                     <div className="mdropdown-content">
-                         <NavLink style={({isActive})=> isActive?{textDecoration:"underline"}:{textDecoration:'none'}} to={'/movieType'}>Popular</NavLink>
+                         <NavLink style={({isActive})=> isActive?{textDecoration:"underline"}:{textDecoration:'none'}} to={'/movies'}>Popular</NavLink>
                          <NavLink to={'/movies'} onClick={(e)=>setMoviesForComing(e)}>Upcoming</NavLink>
                          <NavLink to={'/movies'} onClick={(e)=> setTopRatedMovies(e)}>Top Rated</NavLink>
                     </div>
@@ -110,6 +110,9 @@ import SearchMovies from "./SearchMovies";
                          <NavLink to={'/movies3'}>Popular People</NavLink>
 
                     </div>
+                </div>
+                <div className="mdropdown">
+                         <NavLink to={'/about'}>About US</NavLink>
                 </div>
                 <div>
                     <div className="d-flex" style={{marginTop:'2px'}} >
