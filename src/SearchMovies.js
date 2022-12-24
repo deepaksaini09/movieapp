@@ -3,9 +3,10 @@ import {NavLink} from "react-router-dom";
 function SearchMovies({movies,searchValue}){
     console.log(movies,'hi---------------------------------------------',searchValue)
     return(
-        <div >
+        <div style={{position:'absolute',borderStyle:'groove',opacity:'1',zIndex:10,backgroundColor:"black"}}>
              {movies!=='None'?(movies.movie_details.length>0?<div style={{width: '300px', height: '500px', border: '1px solid black', overflowY: 'scroll'}}>
                     {movies.movie_details.map((item)=>(
+                        <div className={'hoverSearch'}>
                         <NavLink to={`/movies/${((item.movie_name).split(' ').join('-')).toLowerCase()+'-'+item.id}`}
                                            title="">
                         <div className={'DropDown-row'} >
@@ -32,6 +33,7 @@ function SearchMovies({movies,searchValue}){
 
                         </div>
                         </NavLink>
+                            </div>
                     ))}
 
                 </div>:<div  className={'card'} style={{width: '300px', height: '50px',color:'orangered'}}>not found result for {searchValue} </div>)

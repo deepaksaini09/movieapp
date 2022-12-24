@@ -8,7 +8,7 @@ function MovieDetailPage({moviesData}){
     const data = moviesData.movie_details;
     const castActor = moviesData.cast_actor_details;
     const socialData = moviesData.social_link;
-    console.log(data);
+    console.log(data,'9999999999999999999999999999999999999');
 
     const style1 ={
         backgroundImage:`url(${data[0]['poster_image']})`,
@@ -117,24 +117,25 @@ function MovieDetailPage({moviesData}){
             <div className={'card'} style={{marginLeft:'100px',marginRight:'100px',marginTop:'10px'}}>
             <div className={'container'} style={{marginTop:'10px'}}>
                 <h3>Cast Actor</h3>
-               <div className={'row'}>
+               <div style={{display:'flex',overflowX:'scroll',overflowY:'hidden'}} >
+
 
                        {
                            castActor.map((currentData)=>{
                                return(
-                                   <div className={"col-2"}>
-                                       <div className={'card'} style={{width:'200px',height:'400px'}}>
-                                           <NavLink to={'/m'}><img src={currentData['imageOfCastPerson']} style={{width:'100%'}} className={'card transitionImage'}/></NavLink>
-                                           <div className={'container'}>
-                                               <div className={'row'}>
-                                                   <div className={'col-12'}>
+                                   <div  >
+                                       <div className={'card'} style={{width:'200px',height:'400px',marginLeft:'20px'}}>
+                                           <NavLink to={'/m'}><img src={currentData['imageOfCastPerson']} style={{width:'100%'}} className={'card transitionImage'} alt={currentData['characterName']}/></NavLink>
+                                           <div >
+                                               <div >
+                                                   <div >
                                                        <p> {currentData['characterName']}</p>
                                                    </div>
                                                </div>
                                            </div>
-                                           <div className={'container'}>
-                                               <div className={'row'}>
-                                                   <div className={'col-12'}>
+                                           <div >
+                                               <div >
+                                                   <div >
                                                      <p style={{color:'black'}}><b>{currentData['realName']}</b></p>
                                                    </div>
                                                </div>
@@ -144,7 +145,6 @@ function MovieDetailPage({moviesData}){
                                )
                            })
                        }
-
                </div>
             </div>
             <div >

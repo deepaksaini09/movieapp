@@ -65,16 +65,17 @@ function Movies({moviesData,fetchMoreData,year,genre,type}){
                                                            <b>Yay! You have seen it all</b>
                                                        </p>
                                                     }
-                                    > <div className="container ">
+                                    > <div className="container">
                                     <div className="row">
                                     {
                                         moviesData.map((currentData)=>{
                                 return (
 
-                                    <div className="col-sm-2 ms-2 card m-2" style={{width:"20%"}} key={currentData.id}>
-                                        <NavLink to={`/movies/${((currentData.movie_name).split(' ').join('-')).toLowerCase()+'-'+currentData.id}`} className="card-img card-img--lg position-relative"
-                                           title=""><img  title={currentData.movie_name} src={currentData.image_link} style={{marginRight:"10px",width:'100%'}} className="img-responsive card transitionImage" alt={currentData.movie_name}/></NavLink>
-
+                                    <div className="m-2" style={{width:"20%",borderStyle:"groove",position:'relative',borderRadius:'15px'}} key={currentData.id}>
+                                        <div style={{marginLeft:'-14px'}}>
+                                            <NavLink to={`/movies/${((currentData.movie_name).split(' ').join('-')).toLowerCase()+'-'+currentData.id}`} className="card-img card-img--lg position-relative"
+                                               title=""><img  title={currentData.movie_name} src={currentData.image_link} style={{position:'relative',width:'200px'}} className="img-responsive card transitionImage" alt={currentData.movie_name}/></NavLink>
+                                        </div>
                                         <div className={'container'}>
                                              <div className={'row'}>
                                                  <div className={'col-6'}> {currentData.rating_percentage} <FaStar></FaStar></div>
@@ -88,7 +89,7 @@ function Movies({moviesData,fetchMoreData,year,genre,type}){
                                             </div>
 
                                         </div>
-                                        <div className={'row'}>
+                                        <div className={'row'} style={{marginTop:'-7px'}}>
                                             <div className={'col-12'}>
                                                  <span style={{textAlign:"right"}}> {currentData.release_date} </span>
                                             </div>
@@ -111,4 +112,5 @@ function Movies({moviesData,fetchMoreData,year,genre,type}){
             </div>
     )}
 
-export default memo(Movies);
+export default
+memo(Movies);
