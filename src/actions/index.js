@@ -59,3 +59,17 @@ export const searchMovie =(movieName)=>{
         entertainment:movieName,
     }
 }
+
+export const setActorName =(actorName)=>{
+    return{
+        type:'actor',
+        actorName:actorName,
+    }
+}
+
+export const setActorNameAPI =(actorAPI)=>{
+    return{
+        type:'actorAPI',
+        actorAPI:actorAPI,
+    }
+}

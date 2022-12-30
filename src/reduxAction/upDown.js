@@ -65,3 +65,18 @@ export function setSearchMovie(state=searchMovie, action){
         default:return state;
     }
 }
+
+const actorName = ''
+export function setActorName(state=actorName, action){
+    switch (action.type){
+        case 'actor':return action.actorName;
+        default: return state;
+    }
+}
+const actorAPI = ''
+export function setActorAPIData(state=actorAPI,action){
+    switch(action.type){
+        case 'actorAPI': return action.actorAPI;
+        default : return  state;
+    }
+}

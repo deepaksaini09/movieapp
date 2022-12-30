@@ -107,7 +107,7 @@ import SearchMovies from "./SearchMovies";
                         <i className="fa fa-caret-down"></i>
                     </button>
                     <div className="mdropdown-content">
-                         <NavLink to={'/movies3'}>Popular People</NavLink>
+                         <NavLink to={'/people'}>Popular People</NavLink>
 
                     </div>
                 </div>
