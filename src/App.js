@@ -12,9 +12,10 @@ import MovType from "./Entertainment/MovType";
 import {useSelector} from "react-redux";
 import FilterMovies from "./FilterMovies";
 import MovieDescriptionPage from "./MovieDescriptionPage";
-import {setComingMovies} from "./reduxAction/upDown";
+import {setActorName, setComingMovies} from "./reduxAction/upDown";
 import SearchMovies from "./SearchMovies";
 import AboutMetaVerse from "./AboutMetaVerse";
+import PeopleDetailPage from "./PeopleDetailPage";
 
 function App(){
     let isLogged =false;
@@ -26,10 +27,11 @@ function App(){
    const rating = useSelector((state)=>state.setTopRated)
    const coming = useSelector((state)=>state.setComingMovies)
    const searchMovie = useSelector((state)=>state.setSearchMovie)
+    const actorName = useSelector((state)=>state.setActorName)
     return(
         <div>
             <Menu searchM={searchMovie}></Menu>
-            {/*<h1>{type},{genresType},{yearsType},{rating},coming:{coming},Movie:</h1>*/}
+            {/*<h1>{type},{genresType},{yearsType},{rating},coming:{coming},actor:{actorName}</h1>*/}
             {/*<span><FilterMovies type={type}></FilterMovies></span>*/}
                 <Routes>
                     <Route path={'/'} element={<About></About>}></Route>
@@ -41,7 +43,7 @@ function App(){
                     <Route path={"/movies/"} element={<Home type={type} genre={genresType} year={yearsType} top={rating} coming={coming} ></Home>}></Route>
                     <Route path={'/movies/:category'} element={<MovieDescriptionPage></MovieDescriptionPage>}></Route>
                     <Route path={"/tv"} element={<h1>Welcome to TV Shows Page</h1>}></Route>
-                    <Route path={"/people"} element={<h1>Welcome to People Page</h1>}></Route>
+                    <Route path={"/people/:type"} element={<PeopleDetailPage></PeopleDetailPage>}></Route>
                     <Route path={'/movieType/:type'} element={<MovType></MovType>}></Route>
                     <Route path={'/movies/search'} element={<SearchMovies></SearchMovies>} ></Route>
                     <Route path={"*"}  element={<Error></Error>}/>

@@ -2,6 +2,8 @@ import React, {memo} from 'react';
 import './CSS/MovieDetailPage.css'
 import VideoFrame from "./component/VideoFrame";
 import {NavLink,Navigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setActorName} from "./actions";
 
 function MovieDetailPage({moviesData}){
 
@@ -9,6 +11,11 @@ function MovieDetailPage({moviesData}){
     const castActor = moviesData.cast_actor_details;
     const socialData = moviesData.social_link;
     console.log(data,'9999999999999999999999999999999999999');
+    const dispatch = useDispatch()
+    // const usingDispatchSetActorName =(data)=>{
+    //     dispatch(setActorName(data));
+    // }
+
 
     const style1 ={
         backgroundImage:`url(${data[0]['poster_image']})`,
@@ -75,18 +82,18 @@ function MovieDetailPage({moviesData}){
                                  <div className={'row'}>
                                      <div className={'col-6'}>
                                          <ul>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Certificate Movies</span>: UA+</li>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Release Date</span>:  {data[0]['release_date']}</li>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Genre(s)</span>: {genre}</li>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Duration</span>: {data[0]['timePeriod']}</li>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Language</span>: {data[0]['originalLanguage']}</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={1}><span>Certificate Movies</span>: UA+</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={2}><span>Release Date</span>:  {data[0]['release_date']}</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={3}><span>Genre(s)</span>: {genre}</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={4}><span>Duration</span>: {data[0]['timePeriod']}</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={5}><span>Language</span>: {data[0]['originalLanguage']}</li>
                                          </ul>
                                      </div>
                                      <div className={'col-6'}>
                                          <ul>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Released</span>: {data[0]['releaseOrNot']}</li>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Budget  </span>:  {data[0]['budget']}</li>
-                                             <li style={{color:"black",fontSize:'18px'}}><span>Revenue </span>: {data[0]['revenue']}</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={1}><span>Released</span>: {data[0]['releaseOrNot']}</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={2}><span>Budget  </span>:  {data[0]['budget']}</li>
+                                             <li style={{color:"black",fontSize:'18px'}} key={3}><span>Revenue </span>: {data[0]['revenue']}</li>
                                          </ul>
                                      </div>
                                  </div>
@@ -121,11 +128,11 @@ function MovieDetailPage({moviesData}){
 
 
                        {
-                           castActor.map((currentData)=>{
+                           castActor.map((currentData,index)=>{
                                return(
-                                   <div  >
-                                       <div className={'card'} style={{width:'200px',height:'400px',marginLeft:'20px'}}>
-                                           <NavLink to={'/m'}><img src={currentData['imageOfCastPerson']} style={{width:'100%'}} className={'card transitionImage'} alt={currentData['characterName']}/></NavLink>
+                                   <div key={index} >
+                                       <div className={'card'} style={{width:'200px',height:'400px',marginLeft:'20px'}} key={currentData['realName']}>
+                                           <NavLink to={'/people/1'} onClick={()=>dispatch(setActorName(currentData['realName']))}><img src={currentData['imageOfCastPerson']} style={{width:'100%'}} className={'card transitionImage'} alt={currentData['characterName']} /></NavLink>
                                            <div >
                                                <div >
                                                    <div >
