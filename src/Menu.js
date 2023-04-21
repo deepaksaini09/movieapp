@@ -4,7 +4,7 @@ import './NavB.css'
 import './Menu.css'
 import {genresType, searchMovie, topRated, upComing} from "./actions";
 import {useDispatch} from "react-redux";
-import {setComingMovies, setTopRated} from "./reduxAction/upDown";
+// import {setComingMovies, setTopRated} from "./reduxAction/upDown";
 import SearchMovies from "./SearchMovies";
 
  function Menu({searchM}){
@@ -113,6 +113,26 @@ import SearchMovies from "./SearchMovies";
                 </div>
                 <div className="mdropdown">
                          <NavLink to={'/about'}>About US</NavLink>
+                </div>
+                 <div className="mdropdown">
+                    <button className="mdropbtn">Stream Provider
+                        <i className="fa fa-caret-down"></i>
+                    </button>
+                    <div className="mdropdown-content">
+                         <NavLink to={'/streamingOn'}>Today</NavLink>
+                         <NavLink to={'/streamingOn'}>Upcoming</NavLink>
+                         <NavLink to={'/streamingOn'}>This Week</NavLink>
+                        <NavLink to={'/streamingOn'}>This Month</NavLink>
+                    </div>
+                </div>
+                <div className="mdropdown">
+                    <button className="mdropbtn">Popular
+                        <i className="fa fa-caret-down"></i>
+                    </button>
+                    <div className="mdropdown-content">
+                         <NavLink to={'/popular'}>Movies</NavLink>
+                         <NavLink to={'/popular'}>Shows</NavLink>
+                    </div>
                 </div>
                 <div>
                     <div className="d-flex" style={{marginTop:'2px'}} >

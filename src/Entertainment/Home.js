@@ -1,14 +1,14 @@
 import React, {memo, useCallback, useEffect, useState} from "react";
 import Movies from "../component/Movies"
-import Student from "../component/Student";
-import {FaStar} from "react-icons/fa";
-import RatePopUpWindow from "../component/RatePopUpWindow";
-import RouterPath from "../RouterPath";
-import FilterMovies from "../FilterMovies";
-import {useSelector} from "react-redux";
-import {Provider} from "react-redux";
-import store from "../storeReducer";
-import {useNavigate} from "react-router-dom";
+// import Student from "../component/Student";
+// import {FaStar} from "react-icons/fa";
+// import RatePopUpWindow from "../component/RatePopUpWindow";
+// import RouterPath from "../RouterPath";
+// import FilterMovies from "../FilterMovies";
+// import {useSelector} from "react-redux";
+// import {Provider} from "react-redux";
+// import store from "../storeReducer";
+// import {useNavigate} from "react-router-dom";
 
 function Home({type,genre,year,top,coming}){
     const [data,setData] = useState([]);
@@ -94,4 +94,4 @@ function Home({type,genre,year,top,coming}){
         </div>
     )
 }
-export default     memo(Home);
+export default       memo(Home);

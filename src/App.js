@@ -16,6 +16,8 @@ import {setActorName, setComingMovies} from "./reduxAction/upDown";
 import SearchMovies from "./SearchMovies";
 import AboutMetaVerse from "./AboutMetaVerse";
 import PeopleDetailPage from "./PeopleDetailPage";
+import TrendingMovies from "./TrendingMovies";
+import StreamingOn from "./StreamingOn";
 
 function App(){
     let isLogged =false;
@@ -45,6 +47,8 @@ function App(){
                     <Route path={"/tv"} element={<h1>Welcome to TV Shows Page</h1>}></Route>
                     <Route path={"/people/:type"} element={<PeopleDetailPage></PeopleDetailPage>}></Route>
                     <Route path={'/movieType/:type'} element={<MovType></MovType>}></Route>
+                    <Route path={'/popular'} element={<TrendingMovies></TrendingMovies>}></Route>
+                    <Route path={'/streamingOn'} element={<StreamingOn></StreamingOn>}></Route>
                     <Route path={'/movies/search'} element={<SearchMovies></SearchMovies>} ></Route>
                     <Route path={"*"}  element={<Error></Error>}/>
                 </Routes>
