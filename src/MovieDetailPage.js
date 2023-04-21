@@ -6,7 +6,6 @@ import {useDispatch} from "react-redux";
 import {setActorName} from "./actions";
 
 function MovieDetailPage({moviesData}){
-
     const data = moviesData.movie_details;
     const castActor = moviesData.cast_actor_details;
     const socialData = moviesData.social_link;
